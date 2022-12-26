@@ -1,0 +1,294 @@
+AT Project 1
+System Description
+
+The OrangeHRM System is a web based manages employee photos. Employees can add or
+change their own photos and Human Resources can add or change everyone's photos. The
+system produces lists of photos by different selection criteria. Its photos will be used by many
+other systems in the company. The photos are stored in a configurable file structure and the
+photo location is pointed to by a file system. This release only includes employee photos and
+name and address and social security information and not any of the other information planned
+for later.
+
+Test Cases dealing the with login (CREATE ALL POSITIVE AND NEGATIVE
+SCENARIOS)
+
+Test case ID: TC_PIM_01 <-------
+
+Test objective:
+Search — (text Box) Validation on Admin Page
+
+Precondition:
+Launch URL and Login as “Admin”.
+Orange HRM 3.0 site is launched on a compatible browser
+
+Steps:
+1. Go to Admin page.
+2. Validate the below MENU options (on Side Pane) are displaying on Admin page
+3. Validate the Search (Text Box) is displaying on Admin Homepage.
+4. Click on Search Box and search with below text in (Both Lower and Upper Case):
+
+a) Admin
+b) PIM
+c) Leave
+d) Time
+e) Recruitment
+f) My Info
+g) Performance
+h) Dashboard
+i) Directory
+j) Maintenance
+k) Buzz
+
+Expected Result:
+The user should be able to search the above-mentioned Admin Page Menu and these
+individual menu name should be displayed under search text box.
+
+Test case ID: TC_PIM_02 <---------
+Test objective:
+Validation of Page Headers — Drop Down on Admin Page
+
+Precondition:
+Launch URL and Login as “Admin”.
+Orange HRM 3.0 site is launched on a compatible browser
+
+Steps:
+1. Go to Admin page.
+2. Validate the below MENU options (on Side Pane) are displaying on Admin
+page
+3. Click users under User Management in header.
+4. Validate below fields are available under System Users:
+
+a. User Role —- Drop Down
+b. Status - Drop Down.
+
+Expected Result:
+
+The user should be able to see the below values in Drop-Down:
+User-Role Status
+Admin Enabled
+ESS Disabled
+
+Test case ID: TC_PIM_03 <--------
+
+Test objective:
+Creation of New Employee under PIM
+
+Precondition:
+Launch URL and Login as “Admin”.
+
+Orange HRM 3.0 site is launched on a compatible browser
+
+Steps:
+1. Go to Admin page and Click on PIM option.
+2. Validate the below MENU options (on Side Pane) are displaying on PIM page
+3. Click (+Add) button on PIM.
+4. Toggle the “Create Login Details on the Add Employee and Fill all the
+mandatory fields.
+5. Select Enabled — Radio Button.
+6. Click Save button.
+
+Expected Result:
+The user should be able to see the page moved to “Employee List” once user is created.
+
+Test case ID: TC_PIM_4 <----------
+Test objective:
+Validation of Employee Personal Details page post User Creation.
+
+Precondition:
+Launch URL and Login as “Admin".
+
+Orange HRM 3.0 site is launched on a compatible browser.
+Once done with TC-09(Above user creation)
+
+Steps:
+1. Go to Employee List page (Post User Creation in PIM Module)
+
+2. Validate below tabs are present in PIM page:
+
+a. Personal Details
+b. Contact Details
+c. Emergency Contacts
+d. Dependents
+e. Immigration
+f. Job
+g. Salary
+h. Tax Exemptions
+i. Report-to
+j. Qualifications
+k. Memberships
+
+Expected Result:
+The user should be able to see all the tabs present in Employee List page.
+
+Test case ID: TC_PIM_ 5 <--------
+Test objective:
+Updating Employee Personal Details page post User Creation.
+
+Precondition:
+Launch URL and Login as “Admin”.
+
+Orange HRM 3.0 site is launched on a compatible browser.
+
+Once done with TC-09(Above user creation)
+
+Steps:
+1. Go to Employee List page (Post User Creation in PIM Module)
+2. Fill out all fields in Personal Details page.
+3. Click Save and validate filled details are present.
+
+Expected Result:
+The user should be able to see all the filled details present in Personal Details page.
+
+Test case ID: TC_PIM_6 <---------
+Test objective:
+Updating Employee Contact Details page post User Creation.
+
+Precondition:
+Launch URL and Login as “Admin”.
+Orange HRM 3.0 site is launched on a compatible browser.
+Once done with TC-11(Above Personal Details creation)
+
+Steps:
+1. Go to Contact Details
+2. Fill out all fields in Contact Details page.
+3. Click Save and validate filled details are present.
+
+Expected Result:
+The user should be able to see all the filled details present in Contact Details page.
+
+Test case ID: TC_PIM_7 <---------
+Test objective:
+Updating Employee Emergency Contact Details page post User Creation.
+
+Precondition:
+Launch URL and Login as “Admin”.
+
+Orange HRM 3.0 site is launched on a compatible browser.
+Once done with TC-12(Above Contacts Details creation)
+
+Steps:
+1. Go to Emergency Contact Details and Click (Add+).
+2. Fill out all fields in Emergency Contact Details page.
+3. Click Save and validate filled details are present under Assigned Emergency
+Contacts.
+
+Expected Result:
+The user should be able to see all the filled details present in Emergency Contact Details
+page.
+
+Test case ID: TC_PIM_8 <----------
+Test objective:
+Updating Employee Dependents Contact Details page post User Creation.
+Precondition:
+
+Launch URL and Login as “Admin”.
+Orange HRM 3.0 site is launched on a compatible browser.
+Once done with TC-13(Above Contacts Details creation)
+
+Steps:
+1. Go to Dependency Details and Click (Add+).
+2. Fill out all fields in Dependency Details page.
+3. Click Save and validate filled details are present under Assigned Dependent
+Details.
+
+Expected Result:
+The user should be able to see all the filled details present in Emergency Contact Details
+page.
+
+
+Test case ID: TC_PIM 9 <---------
+
+Test objective:
+Updating Employee Job Details page.
+
+Precondition:
+Launch URL and Login as “Admin”.
+
+Orange HRM 3.0 site is launched on a compatible browser.
+
+Once done with TC-14
+
+Steps:
+1. Go to Job Details.
+2. Fill out details under job details.
+3. Toggle — Include Employment Contact Details Button.
+4. Fill out all fields in Contract Details.
+5. Click Save and validate filled details are present under Job Details.
+
+Expected Result:
+The user should be able to see all the filled details present in Job Details page.
+
+Test case ID: TC_PIM_10 <---------
+Test objective:
+Updating Employee Job Details page.
+
+Precondition:
+Launch URL and Login as “Admin”.
+Orange HRM 3.0 site is launched on a compatible browser.
+Once done with TC-15
+
+Steps:
+1. Go to Job Details.
+2. Click Terminate Employment (in Employee Termination).
+3. Fill out Terminate Date and Reason and Click Save.
+4. Click Save and Validate — “Terminated on with selected DATE”.
+5. Make sure “Activate Employment’ is visible.
+
+Expected Result:
+The user should be able to see Termination on Job Details page.
+
+Test case ID: TC_PIM_11 <---------
+Test objective:
+Updating Employee Job Activation on Job Details page.
+
+Precondition:
+Launch URL and Login as “Admin”.
+Orange HRM 3.0 site is launched on a compatible browser.
+Once done with TC-15
+
+Steps:
+1. Go to Job Details.
+2. Click Activate Employment (in Employee Termination/Activation).
+3. Validate Employee Job is Activated.
+
+Expected Result:
+The user should be able to see Activation on Job Details page.
+
+Test case ID: TC_PIM_12 <--------
+Test objective:
+Updating Employee Salary on Salary Component page.
+
+Precondition:
+Launch URL and Login as “Admin”.
+Orange HRM 3.0 site is launched on a compatible browser.
+Once done with TC-17
+
+Steps:
+1. Go to Salary Details and click (+Add).
+2. Add all the Salary Component Details and Click Save.
+3. Toggle - “Direct Deposit Details” and validate fields are visible.
+4. Fill all the mandatory fields.
+5. Click Save and Validate all fields are filled up properly.
+
+Expected Result:
+The user should be able to see Salary and Deposit on Salary Details page.
+
+Test case ID: TC_PIM_13 <----------
+Test objective:
+Updating Employee Salary on Tax Exemptions page.
+
+Precondition:
+Launch URL and Login as “Adm
+Orange HRM 3.0 site is launched on a compatible browser.
+Once done with TC-18
+
+Steps:
+1. Go to Tax Exemptions and click (+Add).
+2. Add all the Tax Exemptions Details and Click Save.
+3. Toggle — “Direct Deposit Details” and validate fields are visible.
+4. Fill all the mandatory fields.
+5. Click Save and Validate all fields are filled up properly.
+
+Expected Result:
+The user should be able to see Salary and Deposit on Salary Details page.
+
