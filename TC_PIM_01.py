@@ -40,7 +40,6 @@ import time
 class TestSearchBox:
     def tc_pim_01(self):
         # launching chrome driver
-        global search_result_text
         driver = webdriver.Chrome()
 
         # loading orange_hrm webpage
