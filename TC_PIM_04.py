@@ -86,7 +86,7 @@ class TestNewEmployee:
         # STEP 4 - fill the mandatory fields
         xpath_of_first_name = '//form/div[1]/div[2]/div[1]/div[1]/div/div/div[2]/div[1]/div[2]/input'
         first_name = driver.find_element(By.XPATH, xpath_of_first_name)
-        first_name.send_keys('shyam')
+        first_name.send_keys('ajay')
 
         xpath_of_last_name = '//form/div[1]/div[2]/div[1]/div[1]/div/div/div[2]/div[3]/div[2]/input'
         last_name = driver.find_element(By.XPATH, xpath_of_last_name)
@@ -116,13 +116,13 @@ class TestNewEmployee:
         time.sleep(5)
 
         # validate page moved to employee list
-        wait1 = WebDriverWait(driver, 2)
+        wait1 = WebDriverWait(driver, 5)
         employee_list = wait1.until(EC.presence_of_element_located((By.XPATH, '//li[@class="oxd-topbar-body-nav-tab --visited"]/a[@class]')))
         employee_text = employee_list.text
 
         if employee_text == "Employee List":
             print("The page moved to “Employee List")
-        time.sleep(5)
+        time.sleep(8)
 
         # TC_PIM_04
         # creating empty list to keep the tab items to be validated
@@ -133,17 +133,17 @@ class TestNewEmployee:
         # using 'for loop' to append all tab items into list
         for tab_name in tab:
             tab_items.append(tab_name.text)
+        print(tab_items)
+        time.sleep(5)
 
-        # search_result = driver.find_element(By.XPATH, xpath_of_tab_items)
-        # search_result_text = search_result.text
+        # create a list of tabs to validate
+        search_result_text = ['Personal Details', 'Contact Details', 'Emergency Contacts', 'Dependents', 'Immigration', 'Job',
+                              'Salary', 'Tax Exemptions', 'Report-to', 'Qualifications', 'Memberships']
 
-        # sending item one by one in lowercase to the search box for validation
-        for item in tab_items:
-            print(item)
-            search_result = driver.find_element(By.XPATH, xpath_of_tab_items)
-            search_result_text = search_result.text
-            assert search_result_text == item
-            # print(f"all the {search_result_text} tabs present in Employee List page")
+        # sending item one by one to validate if it is present
+        for item in search_result_text:
+            assert item in tab_items
+        print("all the tabs are present in Employee List page")
 
         # close driver instance
         driver.close()

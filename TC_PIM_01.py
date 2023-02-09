@@ -48,7 +48,7 @@ class TestSearchBox:
 
         # maximize browser window
         # driver.maximize_window()
-        time.sleep(5)
+        time.sleep(3)
 
         # input username
         xpath_of_username = '//input[@name="username"]'
@@ -64,7 +64,7 @@ class TestSearchBox:
         xpath_of_login_button = '//button[@type="submit"]'
         click_login_button = driver.find_element(By.XPATH, xpath_of_login_button)
         click_login_button.click()
-        time.sleep(8)
+        time.sleep(4)
 
         # STEP 1 - click Admin button
         xpath_of_admin_button = '//li[1]/a[@class="oxd-main-menu-item"]'
@@ -99,7 +99,7 @@ class TestSearchBox:
 
         # sending item one by one in lowercase to the search box for validation
         for item in menu_items:
-            search_textbox.send_keys(item)
+            search_textbox.send_keys(item.lower())
             time.sleep(3)
 
             search_result = wait1.until(EC.presence_of_element_located((By.XPATH, '//span[@class="oxd-text oxd-text--span oxd-main-menu-item--name"]')))
@@ -113,7 +113,7 @@ class TestSearchBox:
 
         # sending item one by one in upper case to the search box for validation
         for item in menu_items:
-            search_textbox.send_keys(item)
+            search_textbox.send_keys(item.upper())
             time.sleep(3)
 
             search_result = wait1.until(EC.presence_of_element_located((By.XPATH, '//span[@class="oxd-text oxd-text--span oxd-main-menu-item--name"]')))

@@ -74,7 +74,7 @@ class EmployeePersonal:
         # STEP 4 - fill the mandatory fields
         xpath_of_first_name = '//form/div[1]/div[2]/div[1]/div[1]/div/div/div[2]/div[1]/div[2]/input'
         first_name = driver.find_element(By.XPATH, xpath_of_first_name)
-        first_name.send_keys('shyam')
+        first_name.send_keys('aaaasahyam')
 
         xpath_of_last_name = '//form/div[1]/div[2]/div[1]/div[1]/div/div/div[2]/div[3]/div[2]/input'
         last_name = driver.find_element(By.XPATH, xpath_of_last_name)
@@ -101,7 +101,7 @@ class EmployeePersonal:
         xpath_of_save_button = '//form/div[2]/button[2]'
         save_button = driver.find_element(By.XPATH, xpath_of_save_button)
         save_button.click()
-        time.sleep(8)
+        time.sleep(10)
 
         # filling the employee information (Personal details)
         xpath_of_employee_other_id = '//form/div[2]/div[1]/div[2]/div/div[2]/input'
@@ -122,7 +122,7 @@ class EmployeePersonal:
         xpath_of_employee_nationality = '//form/div[3]/div[1]/div[1]/div/div[2]/div/div/div[2]/i'
         input_employee_nationality = driver.find_element(By.XPATH, xpath_of_employee_nationality)
         input_employee_nationality.click()
-        xpath_of_indian_nationality = '//form/div[3]/div[1]/div[1]/div/div[2]/div/div[2]/div[94]/span'
+        xpath_of_indian_nationality = '//form/div[3]/div[1]/div[1]/div/div[2]/div/div[2]/div[83]/span'
         input_indian_nationality = driver.find_element(By.XPATH, xpath_of_indian_nationality)
         input_indian_nationality.click()
 
@@ -150,40 +150,34 @@ class EmployeePersonal:
 
         # validate filled details are present
         emp_id = input_employee_other_id.get_attribute('value')
-        if emp_id == employee_other_id:
-            print("Employee Other ID is present")
+        assert emp_id == employee_other_id
 
         emp_license_no = input_employee_driver_license_number.get_attribute('value')
-        if emp_license_no == employee_driver_license_number:
-            print("Employee Driver License Number is present")
+        assert emp_license_no == employee_driver_license_number
 
         emp_license_expiry_date = input_employee_license_expiry_date.get_attribute('value')
-        if emp_license_expiry_date == license_expiry_date:
-            print("Employee Driver License Expiry Date is present")
+        assert emp_license_expiry_date == license_expiry_date
 
         xpath_of_ind_nationality = "//form/div[3]/div[1]/div[1]/div/div[2]/div/div/div[1]"
         emp_nation = driver.find_element(By.XPATH, xpath_of_ind_nationality)
         indian_nationality = emp_nation.text
-        if indian_nationality == "Indian":
-            print("Nationality is present")
+        assert indian_nationality == "Indian"
 
         xpath_of_emp_marital_status = "//form/div[3]/div[1]/div[2]/div/div[2]/div/div/div[1]"
         emp_marital_status = driver.find_element(By.XPATH, xpath_of_emp_marital_status)
         marital_status = emp_marital_status.text
-        if marital_status == "Single":
-            print("Marital Status is present")
+        assert marital_status == "Single"
 
         emp_dob = input_employee_dob.get_attribute("value")
-        if emp_dob == employee_dob:
-            print("Date of Birth is present")
+        assert emp_dob == employee_dob
 
         xpath_of_emp_gender = "//form/div[3]/div[2]/div[2]/div/div[2]/div[1]/div[2]/div/label/span"
         input_emp_gender = driver.find_element(By.XPATH, xpath_of_emp_gender)
-        if input_emp_gender.is_enabled():
-            print("Gender is present")
+        assert input_emp_gender.is_enabled()
+        print("Filled details are present")
 
         # close driver instance
-        driver.close()
+        driver.quit()
 
 
 TN = EmployeePersonal()

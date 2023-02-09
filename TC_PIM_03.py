@@ -78,15 +78,15 @@ class TestNewEmployee:
         # STEP 4 - fill the mandatory fields
         xpath_of_first_name = '//form/div[1]/div[2]/div[1]/div[1]/div/div/div[2]/div[1]/div[2]/input'
         first_name = driver.find_element(By.XPATH, xpath_of_first_name)
-        first_name.send_keys('basil')
+        first_name.send_keys('ajay')
 
         xpath_of_last_name = '//form/div[1]/div[2]/div[1]/div[1]/div/div/div[2]/div[3]/div[2]/input'
         last_name = driver.find_element(By.XPATH, xpath_of_last_name)
-        last_name.send_keys('s')
+        last_name.send_keys('k')
 
         xpath_of_user_name = '//form/div[1]/div[2]/div[3]/div/div[1]/div/div[2]/input'
         user_name = driver.find_element(By.XPATH, xpath_of_user_name)
-        user_name.send_keys('basil211')
+        user_name.send_keys('ajay1245')
 
         # STEP 5 - select enabled — radio button
         xpath_of_status_radio_button = '//form/div[1]/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[2]/div/label/span'
@@ -112,8 +112,8 @@ class TestNewEmployee:
         employee_list = wait1.until(EC.presence_of_element_located((By.XPATH, '//li[@class="oxd-topbar-body-nav-tab --visited"]/a[@class]')))
         employee_text = employee_list.text
 
-        if employee_text == "Employee List":
-            print("The page moved to “Employee List")
+        assert employee_text == "Employee List"
+        print("The page moved to “Employee List")
 
         # close driver instance
         driver.close()

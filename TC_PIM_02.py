@@ -66,7 +66,7 @@ class TestDropDown:
 
         # click user management
         xpath_of_user_management = '//li[@class="oxd-topbar-body-nav-tab --parent --visited"]'
-        user_management  = driver.find_element(By.XPATH, xpath_of_user_management)
+        user_management = driver.find_element(By.XPATH, xpath_of_user_management)
         user_management.click()
         time.sleep(5)
 
@@ -94,7 +94,7 @@ class TestDropDown:
         xpath_of_status_dropdown = '//form/div[1]/div/div[4]/div/div[2]/div/div/div[2]'
         status_dropdown = driver.find_element(By.XPATH, xpath_of_status_dropdown)
         status_dropdown.click()
-        time.sleep(5)
+        time.sleep(8)
 
         # check enabled and disabled are displayed or not
         # using WebDriverWait to wait until the dropdown elements are present
