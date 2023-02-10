@@ -41,6 +41,7 @@ class TestSearchBox:
     def tc_pim_01(self):
         # launching chrome driver
         driver = webdriver.Chrome()
+        driver.implicitly_wait(10)
 
         # loading orange_hrm webpage
         orange_hrm_url = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"
@@ -48,7 +49,7 @@ class TestSearchBox:
 
         # maximize browser window
         # driver.maximize_window()
-        time.sleep(3)
+        # time.sleep(3)
 
         # input username
         xpath_of_username = '//input[@name="username"]'
@@ -64,26 +65,24 @@ class TestSearchBox:
         xpath_of_login_button = '//button[@type="submit"]'
         click_login_button = driver.find_element(By.XPATH, xpath_of_login_button)
         click_login_button.click()
-        time.sleep(4)
+        # time.sleep(4)
 
         # STEP 1 - click Admin button
-        xpath_of_admin_button = '//li[1]/a[@class="oxd-main-menu-item"]'
+        xpath_of_admin_button = '//a[@class="oxd-main-menu-item active"]'
         click_admin_button = driver.find_element(By.XPATH, xpath_of_admin_button)
         click_admin_button.click()
-        time.sleep(5)
+        # time.sleep(5)
 
         # STEP 2 - validate the search (text box) is displaying on admin homepage
         xpath_of_search_textbox = '//input[@placeholder="Search"]'
         search_textbox = driver.find_element(By.XPATH, xpath_of_search_textbox)
-        if search_textbox.is_displayed():
-            print("* Search Textbox is displayed on Admin Homepage")
-        else:
-            print("* Search Textbox is not displayed on Admin Homepage")
+        assert search_textbox.is_displayed()
+        print("SUCCESS # SEARCH TEXTBOX IS DISPLAYED")
 
         # STEP 3 - click on search box and validating menu items displayed or not
         # click search box
         search_textbox.click()
-        time.sleep(5)
+        # time.sleep(5)
 
         # creating empty list to keep the menu items to be searched
         menu_items = []
@@ -100,30 +99,32 @@ class TestSearchBox:
         # sending item one by one in lowercase to the search box for validation
         for item in menu_items:
             search_textbox.send_keys(item.lower())
-            time.sleep(3)
+            # time.sleep(3)
 
-            search_result = wait1.until(EC.presence_of_element_located((By.XPATH, '//span[@class="oxd-text oxd-text--span oxd-main-menu-item--name"]')))
+            # wait until searched element appears
+            search_result = wait1.until(EC.presence_of_element_located((By.XPATH, xpath_of_menu_items)))
             search_result_text = search_result.text
             assert search_result_text.lower() == item.lower()
 
+            # clear search textbox
             search_textbox.send_keys(Keys.CONTROL, "a")
             search_textbox.send_keys(Keys.BACK_SPACE)
-
-        print(f"* Searched in lower case and all menu items are displayed under search text box")
+        print("SUCCESS # ALL MENU ITEMS ARE DISPLAYED WITH LOWER CASE SEARCH")
 
         # sending item one by one in upper case to the search box for validation
         for item in menu_items:
             search_textbox.send_keys(item.upper())
-            time.sleep(3)
+            # time.sleep(3)
 
-            search_result = wait1.until(EC.presence_of_element_located((By.XPATH, '//span[@class="oxd-text oxd-text--span oxd-main-menu-item--name"]')))
+            # wait until searched element appears
+            search_result = wait1.until(EC.presence_of_element_located((By.XPATH, xpath_of_menu_items)))
             search_result_text = search_result.text
             assert search_result_text.upper() == item.upper()
 
+            # clear search textbox
             search_textbox.send_keys(Keys.CONTROL, "a")
             search_textbox.send_keys(Keys.BACK_SPACE)
-
-        print(f"* Searched in upper case and all menu items are displayed under search text box")
+        print("SUCCESS # ALL MENU ITEMS ARE DISPLAYED WITH UPPER CASE SEARCH")
 
         # close driver instance
         driver.close()

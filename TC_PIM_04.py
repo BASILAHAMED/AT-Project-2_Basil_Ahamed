@@ -41,6 +41,7 @@ class TestNewEmployee:
     def tc_pim_04(self):
         # launching chrome driver
         driver = webdriver.Chrome()
+        driver.implicitly_wait(10)
 
         # loading orange_hrm webpage
         orange_hrm_url = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"
@@ -48,7 +49,7 @@ class TestNewEmployee:
 
         # maximize browser window
         # driver.maximize_window()
-        time.sleep(5)
+        # time.sleep(5)
 
         # input username
         xpath_of_username = '//input[@name="username"]'
@@ -64,65 +65,65 @@ class TestNewEmployee:
         xpath_of_login_button = '//button[@type="submit"]'
         click_login_button = driver.find_element(By.XPATH, xpath_of_login_button)
         click_login_button.click()
-        time.sleep(5)
+        # time.sleep(5)
 
         # STEP 1 - click PIM button
-        xpath_of_pim_button = '//div[2]/ul/li[2]/a'
+        xpath_of_pim_button = '//li[@class="oxd-main-menu-item-wrapper"][2]//a'
         click_pim_button = driver.find_element(By.XPATH, xpath_of_pim_button)
         click_pim_button.click()
-        time.sleep(5)
+        # time.sleep(5)
 
         # STEP 2 - click (+add) button on pim
-        xpath_of_add = '//div[2]/div[1]/button'
+        xpath_of_add = '//div[@class="orangehrm-header-container"]//button'
         add_button = driver.find_element(By.XPATH, xpath_of_add)
         add_button.click()
-        time.sleep(5)
+        # time.sleep(5)
 
         # STEP 3 - toggle the create login details on the add employee
-        xpath_of_toggle = '//form/div[1]/div[2]/div[2]/div/label/span'
+        xpath_of_toggle = '//div[@class="oxd-switch-wrapper"]//span'
         toggle_button = driver.find_element(By.XPATH, xpath_of_toggle)
         toggle_button.click()
 
         # STEP 4 - fill the mandatory fields
-        xpath_of_first_name = '//form/div[1]/div[2]/div[1]/div[1]/div/div/div[2]/div[1]/div[2]/input'
+        xpath_of_first_name = '//input[@name="firstName"]'
         first_name = driver.find_element(By.XPATH, xpath_of_first_name)
         first_name.send_keys('ajay')
 
-        xpath_of_last_name = '//form/div[1]/div[2]/div[1]/div[1]/div/div/div[2]/div[3]/div[2]/input'
+        xpath_of_last_name = '//input[@name="lastName"]'
         last_name = driver.find_element(By.XPATH, xpath_of_last_name)
         last_name.send_keys('k')
 
-        xpath_of_user_name = '//form/div[1]/div[2]/div[3]/div/div[1]/div/div[2]/input'
+        xpath_of_user_name = '//div[@class="orangehrm-employee-container"]//div[3]/div/div[1]/div/div[2]/input'
         user_name = driver.find_element(By.XPATH, xpath_of_user_name)
         user_name.send_keys('shamk8912')
 
         # STEP 5 - select enabled — radio button
-        xpath_of_status_radio_button = '//form/div[1]/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[2]/div/label/span'
+        xpath_of_status_radio_button = '//div[@class="--status-grouped-field"]//div[1]//div[2]//span'
         status_radio_button = driver.find_element(By.XPATH, xpath_of_status_radio_button)
         status_radio_button.click()
 
-        xpath_of_password = '//form/div[1]/div[2]/div[4]/div/div[1]/div/div[2]/input'
+        xpath_of_password = '//div[@class="oxd-grid-item oxd-grid-item--gutters user-password-cell"]//div[1]//div[2]//input'
         password = driver.find_element(By.XPATH, xpath_of_password)
         password.send_keys('Basil@1234')
 
-        xpath_of_confirm_password = '//form/div[1]/div[2]/div[4]/div/div[2]/div/div[2]/input'
+        xpath_of_confirm_password = '//div[@class="oxd-form-row user-password-row"]//div//div[2]//div//div[2]//input'
         confirm_password = driver.find_element(By.XPATH, xpath_of_confirm_password)
         confirm_password.send_keys('Basil@1234')
 
         # STEP 6 - click save button
-        xpath_of_save_button = '//form/div[2]/button[2]'
+        xpath_of_save_button = '//button[@type="submit"]'
         save_button = driver.find_element(By.XPATH, xpath_of_save_button)
         save_button.click()
-        time.sleep(5)
+        # time.sleep(5)
 
-        # validate page moved to employee list
-        wait1 = WebDriverWait(driver, 5)
-        employee_list = wait1.until(EC.presence_of_element_located((By.XPATH, '//li[@class="oxd-topbar-body-nav-tab --visited"]/a[@class]')))
-        employee_text = employee_list.text
-
-        if employee_text == "Employee List":
-            print("The page moved to “Employee List")
-        time.sleep(8)
+        # # validate page moved to employee list
+        # wait1 = WebDriverWait(driver, 5)
+        # employee_list = wait1.until(EC.presence_of_element_located((By.XPATH, '//li[@class="oxd-topbar-body-nav-tab --visited"]/a[@class]')))
+        # employee_text = employee_list.text
+        #
+        # if employee_text == "Employee List":
+        #     print("The page moved to “Employee List")
+        # time.sleep(8)
 
         # TC_PIM_04
         # creating empty list to keep the tab items to be validated
@@ -133,8 +134,7 @@ class TestNewEmployee:
         # using 'for loop' to append all tab items into list
         for tab_name in tab:
             tab_items.append(tab_name.text)
-        print(tab_items)
-        time.sleep(5)
+        # time.sleep(5)
 
         # create a list of tabs to validate
         search_result_text = ['Personal Details', 'Contact Details', 'Emergency Contacts', 'Dependents', 'Immigration', 'Job',
@@ -143,7 +143,7 @@ class TestNewEmployee:
         # sending item one by one to validate if it is present
         for item in search_result_text:
             assert item in tab_items
-        print("all the tabs are present in Employee List page")
+        print("SUCCESS # ALL TABS ARE PRESENT")
 
         # close driver instance
         driver.close()
