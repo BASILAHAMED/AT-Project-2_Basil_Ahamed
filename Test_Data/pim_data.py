@@ -2,6 +2,7 @@
 
 # Python Class for Username and Password
 class LoginData:
+    url = "https://opensource-demo.orangehrmlive.com"
     username = "Admin"
     password = "admin123"
 
@@ -31,10 +32,18 @@ class ElementLocators:
     xpath_username = '//input[@name="username"]'
     xpath_password = '//input[@type="password"]'
     xpath_login = '//button[@type="submit"]'
+
+    # pim1
     # click PIM module
     xpath_pim_module = '//li[@class="oxd-main-menu-item-wrapper"][2]//a'
+    # click Admin button
+    xpath_admin_button = '//a[@class="oxd-main-menu-item active"]'
     # click add button
     xpath_add_button = '//div[@class="orangehrm-header-container"]//button'
+    # click search_textbox button
+    xpath_search_textbox = '//input[@placeholder="Search"]'
+    xpath_menu_items = '//span[@class="oxd-text oxd-text--span oxd-main-menu-item--name"]'
+
     # fill the personal details
     xpath_employee_firstname = '//input[@name="firstName"]'
     xpath_employee_lastname = '//input[@name="lastName"]'

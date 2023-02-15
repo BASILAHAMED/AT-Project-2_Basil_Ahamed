@@ -74,8 +74,8 @@ class TestSearchBox:
         # time.sleep(5)
 
         # STEP 2 - validate the search (text box) is displaying on admin homepage
-        xpath_of_search_textbox = '//input[@placeholder="Search"]'
-        search_textbox = driver.find_element(By.XPATH, xpath_of_search_textbox)
+        xpath_search_textbox = '//input[@placeholder="Search"]'
+        search_textbox = driver.find_element(By.XPATH, xpath_search_textbox)
         assert search_textbox.is_displayed()
         print("SUCCESS # SEARCH TEXTBOX IS DISPLAYED")
 
@@ -86,8 +86,8 @@ class TestSearchBox:
 
         # creating empty list to keep the menu items to be searched
         menu_items = []
-        xpath_of_menu_items = '//span[@class="oxd-text oxd-text--span oxd-main-menu-item--name"]'
-        menu = driver.find_elements(By.XPATH, xpath_of_menu_items)
+        xpath_menu_items = '//span[@class="oxd-text oxd-text--span oxd-main-menu-item--name"]'
+        menu = driver.find_elements(By.XPATH, xpath_menu_items)
 
         # using 'for loop' to append all menu items into list
         for item_name in menu:
@@ -102,7 +102,7 @@ class TestSearchBox:
             # time.sleep(3)
 
             # wait until searched element appears
-            search_result = wait1.until(EC.presence_of_element_located((By.XPATH, xpath_of_menu_items)))
+            search_result = wait1.until(EC.presence_of_element_located((By.XPATH, xpath_menu_items)))
             search_result_text = search_result.text
             assert search_result_text.lower() == item.lower()
 
@@ -117,7 +117,7 @@ class TestSearchBox:
             # time.sleep(3)
 
             # wait until searched element appears
-            search_result = wait1.until(EC.presence_of_element_located((By.XPATH, xpath_of_menu_items)))
+            search_result = wait1.until(EC.presence_of_element_located((By.XPATH, xpath_menu_items)))
             search_result_text = search_result.text
             assert search_result_text.upper() == item.upper()
 
