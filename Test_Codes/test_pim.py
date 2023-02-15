@@ -78,86 +78,39 @@ class TestPIM:
         print("SUCCESS # ALL MENU ITEMS ARE DISPLAYED WITH UPPER CASE SEARCH")
 
     def test_pim2(self, launch_driver):
-        # click PIM module
-        self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_pim_module).click()
+        # STEP 1 - click Admin button
+        self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_admin_button).click()
 
-        # search existing employee added earlier ("Ajith Kumar")
-        self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_employee_search).send_keys(
-            pim_data.PersonalDetails.employee_search)
+        # STEP 2 - click users under user management in header
+        # click user management
+        self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_of_user_management).click()
 
-        # click search button
-        self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_save_button).click()
+        # click user menu
+        self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_of_user_menu).click()
 
-        # click edit employee button
-        self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_edit_button).click()
+        # validate user role and status dropdown
+        self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_of_user_role_dropdown).click()
 
-        # editing the employee information (Personal details)
-        send_updated_employee_id = self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_employee1_id)
-        send_updated_employee_id.send_keys(Keys.CONTROL, "a")  # <--- Using ctrl+A key combination to delete default values --->
-        send_updated_employee_id.send_keys(Keys.DELETE)
-        send_updated_employee_id.send_keys(pim_data.PersonalDetails.updated_employee_id)
+        # check admin and ess are displayed or not
+        # using WebDriverWait to wait until the dropdown elements are present
+        wait1 = WebDriverWait(self.driver, 5)
+        admin_value = wait1.until(EC.presence_of_element_located(
+            (By.XPATH, pim_data.ElementLocators.xpath_of_admin_value)))
+        ess_value = wait1.until(EC.presence_of_element_located(
+            (By.XPATH, pim_data.ElementLocators.xpath_of_ess_value)))
 
-        send_employee_other_id = self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_employee_other_id)
-        send_employee_other_id.send_keys(Keys.CONTROL, "a")
-        send_employee_other_id.send_keys(Keys.DELETE)
-        send_employee_other_id.send_keys(pim_data.PersonalDetails.updated_employee_other_id)
+        assert admin_value.is_displayed() and ess_value.is_displayed()
+        print("SUCCESS # ADMIN AND ESS VALUES PRESENT")
 
-        send_employee_driver_license_number = self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_employee_driver_license_number)
-        send_employee_driver_license_number.send_keys(Keys.CONTROL, "a")
-        send_employee_driver_license_number.send_keys(Keys.DELETE)
-        send_employee_driver_license_number.send_keys(pim_data.PersonalDetails.updated_license_number)
+        # check enabled and disabled are displayed or not
+        self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_of_status_dropdown).click()
 
-        send_employee_license_expiry_date = self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_employee_license_expiry_date)
-        send_employee_license_expiry_date.send_keys(Keys.CONTROL, "a")
-        send_employee_license_expiry_date.send_keys(Keys.DELETE)
-        send_employee_license_expiry_date.send_keys(pim_data.PersonalDetails.updated_license_expiry_date)
+        # using WebDriverWait to wait until the dropdown elements are present
+        wait1 = WebDriverWait(self.driver, 5)
+        enabled_dropdown = wait1.until(EC.presence_of_element_located(
+            (By.XPATH, '')))
+        disabled_dropdown = wait1.until(EC.presence_of_element_located(
+            (By.XPATH, pim_data.ElementLocators.xpath_of_disabled_dropdown)))
 
-        # click save button
-        self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_save1_button).click()
-
-        # verifying employee details edited or not
-        # click employee list button
-        self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_list_button).click()
-
-        # search existing employee edited now ("Ajith Kumar")
-        self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_employee_search).send_keys(
-            pim_data.PersonalDetails.employee_search)
-
-        # click search button
-        self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_save_button).click()
-
-        # assert employee id equals to edited employee id
-        fetch = self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_edited_id).text
-        assert fetch == "9876"
-        print("SUCCESS # EMPLOYEE \"{first_name} {last_name}\" DETAILS EDITED".format(
-            first_name=pim_data.PersonalDetails.first_name.upper(),
-            last_name=pim_data.PersonalDetails.last_name.upper()))
-
-    def test_pim3(self, launch_driver):
-        # click PIM module
-        self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_pim_module).click()
-
-        # search existing employee added earlier ("Ajith Kumar")
-        self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_employee_search).send_keys(
-            pim_data.PersonalDetails.employee_search)
-
-        # click search button
-        self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_save_button).click()
-
-        # click delete employee button
-        self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_delete_button).click()
-
-        # click delete confirmation alert
-        self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_delete_alert).click()
-
-        # verify deletion by again searching employee present or not
-        # click search button
-        self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_save_button).click()
-
-        # print employee deleted status
-        # if no records found for that employee, then employee deleted
-        no_records = self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_confirm_no_records).text
-        assert no_records == "No Records Found"
-        print("SUCCESS # EMPLOYEE \"{first_name} {last_name}\" DETAILS DELETED".format(
-            first_name=pim_data.PersonalDetails.first_name.upper(),
-            last_name=pim_data.PersonalDetails.last_name.upper()))
+        assert enabled_dropdown.is_displayed() and disabled_dropdown.is_displayed()
+        print("SUCCESS # ENABLED AND DISABLED STATUS PRESENT")
