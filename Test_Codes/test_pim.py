@@ -108,9 +108,48 @@ class TestPIM:
         # using WebDriverWait to wait until the dropdown elements are present
         wait1 = WebDriverWait(self.driver, 5)
         enabled_dropdown = wait1.until(EC.presence_of_element_located(
-            (By.XPATH, '')))
+            (By.XPATH, pim_data.ElementLocators.xpath_of_enabled_dropdown)))
         disabled_dropdown = wait1.until(EC.presence_of_element_located(
             (By.XPATH, pim_data.ElementLocators.xpath_of_disabled_dropdown)))
 
         assert enabled_dropdown.is_displayed() and disabled_dropdown.is_displayed()
         print("SUCCESS # ENABLED AND DISABLED STATUS PRESENT")
+
+    def test_pim3(self, launch_driver):
+        # STEP 1 - click PIM button
+        self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_pim_button).click()
+
+        # STEP 2 - click (+add) button on pim
+        self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_add_button).click()
+
+        # STEP 3 - toggle the create login details on the add employee
+        wait1 = WebDriverWait(self.driver, 5)
+        toggle_button = wait1.until(EC.visibility_of_element_located((By.XPATH, pim_data.ElementLocators.xpath_of_toggle)))
+        toggle_button.click()
+
+        # STEP 4 - fill the mandatory fields
+        # send first name
+        self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_of_first_name).send_keys(pim_data.PersonalDetails.first_name)
+
+        # send last name
+        self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_of_last_name).send_keys(pim_data.PersonalDetails.last_name)
+
+        # send username
+        self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_of_user_name).send_keys(pim_data.PersonalDetails.user_name)
+
+        # STEP 5 - select enabled — radio button
+        self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_of_status_radio_button).click()
+        self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_of_password).send_keys(pim_data.PersonalDetails.password)
+        self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_of_confirm_password).send_keys(pim_data.PersonalDetails.confirm_password)
+
+        # STEP 6 - click save button
+        self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_of_save_button).click()
+
+        # validate page moved to employee list
+        wait1 = WebDriverWait(self.driver, 5)
+        employee_list = wait1.until(
+            EC.text_to_be_present_in_element((By.XPATH, pim_data.ElementLocators.xpath_of_employee_list), "Employee List"))
+        employee_text = self.driver.find_element(By.XPATH, pim_data.ElementLocators.xpath_of_employee_list).text
+
+        assert employee_text == "Employee List"
+        print("SUCCESS # PAGE MOVED TO EMPLOYEE LIST")

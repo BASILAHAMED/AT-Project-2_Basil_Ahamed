@@ -8,9 +8,14 @@ class LoginData:
 
 
 class PersonalDetails:
-    # pim1
+    # pim 3
     first_name = "Ajith"
     last_name = "Kumar"
+    user_name = "ajith78"
+    password = "Ajith@1256"
+    confirm_password = "Ajith@1256"
+
+
     # employee_id = "0872"
     # employee1_id = "0786"
     # employee_other_id = "27486312"
@@ -18,7 +23,7 @@ class PersonalDetails:
     # license_expiry_date = "2032-12-10"
     # employee_dob = "1992-01-05"
     #
-    # # pim2
+    # # pim 2
     # employee_search = "Ajith Kumar"
     # updated_employee_id = "9876"
     # updated_employee_other_id = "355"
@@ -33,15 +38,15 @@ class ElementLocators:
     xpath_password = '//input[@type="password"]'
     xpath_login = '//button[@type="submit"]'
 
-    # pim1
+    # pim 1
     # click Admin button
-    xpath_admin_button = '//a[@class="oxd-main-menu-item active"]'
+    xpath_admin_button = '//a[@href="/web/index.php/admin/viewAdminModule"]'
     # click search_textbox button
     xpath_search_textbox = '//input[@placeholder="Search"]'
     # xpath of menu items
     xpath_menu_items = '//span[@class="oxd-text oxd-text--span oxd-main-menu-item--name"]'
 
-    # pim2
+    # pim 2
     # click user management
     xpath_of_user_management = '//li[@class="oxd-topbar-body-nav-tab --parent --visited"]'
     # click user menu
@@ -52,13 +57,28 @@ class ElementLocators:
     xpath_of_status_dropdown = '//div[@class="oxd-grid-4 orangehrm-full-width-grid"]//div[4]//div//div[2]//div//div//div//i'
     xpath_of_enabled_dropdown = '//div[@class="oxd-grid-item oxd-grid-item--gutters"][4]/div/div[2]/div/div[2]/div[2]'
     xpath_of_disabled_dropdown = '//div[@class="oxd-grid-item oxd-grid-item--gutters"][4]/div/div[2]/div/div[2]/div[3]'
-    # # click PIM module
-    # xpath_pim_module = '//li[@class="oxd-main-menu-item-wrapper"][2]//a'
 
-    # # click add button
-    # xpath_add_button = '//div[@class="orangehrm-header-container"]//button'
+    # pim 3
+    # click PIM module
+    xpath_pim_button = '//li[@class="oxd-main-menu-item-wrapper"][2]//a'
+    # click add button
+    xpath_add_button = '//div[@class="orangehrm-header-container"]//button'
+    xpath_of_toggle = '//div[@class="oxd-switch-wrapper"]//span'
+    xpath_of_first_name = '//input[@name="firstName"]'
+    xpath_of_last_name = '//input[@name="lastName"]'
+    xpath_of_user_name = '//div[@class="orangehrm-employee-container"]//div[3]/div/div[1]/div/div[2]/input'
+    xpath_of_status_radio_button = '//div[@class="--status-grouped-field"]//div[1]//div[2]//span'
+    xpath_of_password = '//div[@class="oxd-grid-item oxd-grid-item--gutters user-password-cell"]//div[1]//div[2]//input'
+    xpath_of_confirm_password = '//div[@class="oxd-form-row user-password-row"]//div//div[2]//div//div[2]//input'
+    xpath_of_save_button = '//button[@type="submit"]'
+    xpath_of_employee_list = '//li[@class="oxd-topbar-body-nav-tab --visited"]//a'
 
-    #
+    # pim 4
+
+
+
+
+
     # # fill the personal details
     # xpath_employee_firstname = '//input[@name="firstName"]'
     # xpath_employee_lastname = '//input[@name="lastName"]'
