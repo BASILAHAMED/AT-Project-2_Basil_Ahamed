@@ -9,15 +9,27 @@ This release only includes employee photos and name and address and social secur
 
 Total 13 Testcases
 TC_PIM_01 - Search (text Box) Validation on Admin Page
+
 TC_PIM_02 - Validation of Page Headers - Drop Down on Admin Page
+
 TC_PIM_03 - Creation of New Employee under PIM
+
 TC_PIM_4 - Validation of Employee Personal Details page post User Creation.
+
 TC_PIM_ 5 - Updating Employee Personal Details page post User Creation.
+
 TC_PIM_6 - Updating Employee Contact Details page post User Creation.
+
 TC_PIM_7 - Updating Employee Emergency Contact Details page post User Creation.
+
 TC_PIM_8 - Updating Employee Dependents Contact Details page post User Creation.
+
 TC_PIM 9 - Updating Employee Job Details page.
+
 TC_PIM_10 - Updating Employee Job Details page.
+
 TC_PIM_11 - Updating Employee Job Activation on Job Details page.
+
 TC_PIM_12 - Updating Employee Salary on Salary Component page.
+
 TC_PIM_13 - Updating Employee Salary on Tax Exemptions page.
