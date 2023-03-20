@@ -73,48 +73,59 @@ class TestNewEmployee:
         click_pim_button.click()
         # time.sleep(5)
 
-        # STEP 2 - click (+add) button on pim
-        xpath_of_add = '//div[@class="orangehrm-header-container"]//button'
-        add_button = driver.find_element(By.XPATH, xpath_of_add)
-        add_button.click()
+        # STEP 2 - search employee name
+        xpath_of_search_employee = '(//input[@placeholder="Type for hints..."])[1]'
+        click_search_employee_button = driver.find_element(By.XPATH, xpath_of_search_employee)
+        click_search_employee_button.send_keys('ajay')
         # time.sleep(5)
 
-        # STEP 3 - toggle the create login details on the add employee
-        xpath_of_toggle = '//div[@class="oxd-switch-wrapper"]//span'
-        toggle_button = driver.find_element(By.XPATH, xpath_of_toggle)
-        toggle_button.click()
-
-        # STEP 4 - fill the mandatory fields
-        xpath_of_first_name = '//input[@name="firstName"]'
-        first_name = driver.find_element(By.XPATH, xpath_of_first_name)
-        first_name.send_keys('ajay')
-
-        xpath_of_last_name = '//input[@name="lastName"]'
-        last_name = driver.find_element(By.XPATH, xpath_of_last_name)
-        last_name.send_keys('k')
-
-        xpath_of_user_name = '//div[@class="orangehrm-employee-container"]//div[3]/div/div[1]/div/div[2]/input'
-        user_name = driver.find_element(By.XPATH, xpath_of_user_name)
-        user_name.send_keys('shamk8912')
-
-        # STEP 5 - select enabled — radio button
-        xpath_of_status_radio_button = '//div[@class="--status-grouped-field"]//div[1]//div[2]//span'
-        status_radio_button = driver.find_element(By.XPATH, xpath_of_status_radio_button)
-        status_radio_button.click()
-
-        xpath_of_password = '//div[@class="oxd-grid-item oxd-grid-item--gutters user-password-cell"]//div[1]//div[2]//input'
-        password = driver.find_element(By.XPATH, xpath_of_password)
-        password.send_keys('Basil@1234')
-
-        xpath_of_confirm_password = '//div[@class="oxd-form-row user-password-row"]//div//div[2]//div//div[2]//input'
-        confirm_password = driver.find_element(By.XPATH, xpath_of_confirm_password)
-        confirm_password.send_keys('Basil@1234')
-
-        # STEP 6 - click save button
+        # # STEP 2 - click (+add) button on pim
+        # xpath_of_add = '//div[@class="orangehrm-header-container"]//button'
+        # add_button = driver.find_element(By.XPATH, xpath_of_add)
+        # add_button.click()
+        # # time.sleep(5)
+        #
+        # # STEP 3 - toggle the create login details on the add employee
+        # xpath_of_toggle = '//div[@class="oxd-switch-wrapper"]//span'
+        # toggle_button = driver.find_element(By.XPATH, xpath_of_toggle)
+        # toggle_button.click()
+        #
+        # # STEP 4 - fill the mandatory fields
+        # xpath_of_first_name = '//input[@name="firstName"]'
+        # first_name = driver.find_element(By.XPATH, xpath_of_first_name)
+        # first_name.send_keys('ajay')
+        #
+        # xpath_of_last_name = '//input[@name="lastName"]'
+        # last_name = driver.find_element(By.XPATH, xpath_of_last_name)
+        # last_name.send_keys('k')
+        #
+        # xpath_of_user_name = '//div[@class="orangehrm-employee-container"]//div[3]/div/div[1]/div/div[2]/input'
+        # user_name = driver.find_element(By.XPATH, xpath_of_user_name)
+        # user_name.send_keys('shamk8912')
+        #
+        # # STEP 5 - select enabled — radio button
+        # xpath_of_status_radio_button = '//div[@class="--status-grouped-field"]//div[1]//div[2]//span'
+        # status_radio_button = driver.find_element(By.XPATH, xpath_of_status_radio_button)
+        # status_radio_button.click()
+        #
+        # xpath_of_password = '//div[@class="oxd-grid-item oxd-grid-item--gutters user-password-cell"]//div[1]//div[2]//input'
+        # password = driver.find_element(By.XPATH, xpath_of_password)
+        # password.send_keys('Basil@1234')
+        #
+        # xpath_of_confirm_password = '//div[@class="oxd-form-row user-password-row"]//div//div[2]//div//div[2]//input'
+        # confirm_password = driver.find_element(By.XPATH, xpath_of_confirm_password)
+        # confirm_password.send_keys('Basil@1234')
+        #
+        # STEP 6 - click search/save button
         xpath_of_save_button = '//button[@type="submit"]'
         save_button = driver.find_element(By.XPATH, xpath_of_save_button)
         save_button.click()
         # time.sleep(5)
+
+        # STEP 7 - click employee edit button
+        xpath_of_employee_list = '(//button[@class="oxd-icon-button oxd-table-cell-action-space"])[2]'
+        edit_button = driver.find_element(By.XPATH, xpath_of_employee_list)
+        edit_button.click()
 
         # # validate page moved to employee list
         # wait1 = WebDriverWait(driver, 5)

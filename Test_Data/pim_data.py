@@ -1,4 +1,4 @@
-# This file consists of Test Information like username, password, XPATH etc
+# This file consists of test datas like username, password, XPATH etc
 
 # Python Class for Username and Password
 class LoginData:
@@ -14,15 +14,17 @@ class PersonalDetails:
     user_name = "ajith78"
     password = "Ajith@1256"
     confirm_password = "Ajith@1256"
+    employee_other_id = "27486312"
+    license_number = "110579"
+    license_expiry_date = "2032-12-10"
+    employee_dob = "1992-01-05"
+    marital_status = "Single"
+
+    # pim 4
 
 
     # employee_id = "0872"
     # employee1_id = "0786"
-    # employee_other_id = "27486312"
-    # license_number = "110579"
-    # license_expiry_date = "2032-12-10"
-    # employee_dob = "1992-01-05"
-    #
     # # pim 2
     # employee_search = "Ajith Kumar"
     # updated_employee_id = "9876"
@@ -74,10 +76,22 @@ class ElementLocators:
     xpath_of_employee_list = '//li[@class="oxd-topbar-body-nav-tab --visited"]//a'
 
     # pim 4
+    xpath_of_search_employee = '(//input[@placeholder="Type for hints..."])[1]'
+    xpath_of_employee_list1 = '(//button[@class="oxd-icon-button oxd-table-cell-action-space"])[2]'
+    xpath_of_tab_items = '//div[@role="tab"]//a'
 
-
-
-
+    # pim 5
+    xpath_of_record_found = '//span[normalize-space()="(1) Record Found"]'
+    xpath_of_employee_other_id = '(//input[@class="oxd-input oxd-input--active"])[4]'
+    xpath_of_employee_driver_license_number = '(//input[@class="oxd-input oxd-input--active"])[5]'
+    xpath_of_employee_license_expiry_date = '(//input[@class="oxd-input oxd-input--active"])[6]'
+    xpath_of_employee_nationality = '(//div[@class="oxd-select-text--after"]//i)[1]'
+    xpath_of_indian_nationality = '(//div[@class="oxd-select-text-input"])[1]'
+    xpath_of_employee_marital_status = '(//div[@class="oxd-select-text--after"]//i)[2]'
+    xpath_of_single_marital_status = '//div[contains(text(),"Single")]'
+    xpath_of_employee_dob = '(//input[@class="oxd-input oxd-input--active"])[9]'
+    xpath_of_employee_gender = '(//span[@class="oxd-radio-input oxd-radio-input--active --label-right oxd-radio-input"])[1]'
+    xpath_of_save_button1 = '(//button[@type="submit"])[1]'
 
     # # fill the personal details
     # xpath_employee_firstname = '//input[@name="firstName"]'

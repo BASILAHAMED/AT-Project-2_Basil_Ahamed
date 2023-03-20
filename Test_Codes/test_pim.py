@@ -153,3 +153,116 @@ class TestPIM:
 
         assert employee_text == "Employee List"
         print("SUCCESS # PAGE MOVED TO EMPLOYEE LIST")
+
+    def test_pim4(self, launch_driver):
+        # STEP 1 - click PIM button
+        self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_pim_button).click()
+
+        # STEP 2 - search employee name
+        self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_of_search_employee).click()
+
+        # STEP 3 - click search/save button
+        self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_of_save_button).click()
+
+        # STEP 4 - click employee edit button
+        self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_of_employee_list1).click()
+
+        # STEP 5 - creating empty list to keep the tab items to be validated
+        tab_items = []
+        tab = self.driver.find_elements(by=By.XPATH, value=pim_data.ElementLocators.xpath_of_tab_items)
+
+        # using 'for loop' to append all tab items into list
+        for tab_name in tab:
+            tab_items.append(tab_name.text)
+
+        # create a list of tabs to validate
+        search_result_text = ['Personal Details', 'Contact Details', 'Emergency Contacts', 'Dependents', 'Immigration',
+                              'Job', 'Salary', 'Tax Exemptions', 'Report-to', 'Qualifications', 'Memberships']
+
+        # STEP 6 - sending item one by one to assert if it is present
+        for item in search_result_text:
+            assert item in tab_items
+        print("SUCCESS # ALL TABS ARE PRESENT")
+
+    def test_pim5(self, launch_driver):
+        # STEP 1 - click PIM button
+        self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_pim_button).click()
+
+        # STEP 2 - search employee name
+        self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_of_search_employee).send_keys(pim_data.PersonalDetails.first_name)
+
+        # STEP 3 - click search/save button
+        self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_of_save_button).click()
+
+        # STEP 4 - click employee edit button
+        wait = WebDriverWait(self.driver, 10)
+        record_found = wait.until(EC.presence_of_element_located((By.XPATH, pim_data.ElementLocators.xpath_of_record_found)))
+        self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_of_employee_list1).click()
+
+        # STEP 5 - filling the employee information (Personal details)
+        input_employee_other_id = wait.until(EC.presence_of_element_located((By.XPATH, pim_data.ElementLocators.xpath_of_employee_other_id)))
+        # input_employee_other_id = driver.find_element(By.XPATH, xpath_of_employee_other_id)
+        input_employee_other_id.send_keys(pim_data.PersonalDetails.employee_other_id)
+
+        input_employee_driver_license_number = self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_of_employee_driver_license_number)
+        input_employee_driver_license_number.send_keys(pim_data.PersonalDetails.license_number)
+
+        input_employee_license_expiry_date = self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_of_employee_license_expiry_date)
+        input_employee_license_expiry_date.send_keys(pim_data.PersonalDetails.license_expiry_date)
+
+        # click employee nationality and select Indian
+        self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_of_employee_nationality).click()
+        self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_of_indian_nationality).click()
+
+        # select martial status to single
+        self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_of_employee_marital_status).click()
+        single_status = wait.until(
+            EC.text_to_be_present_in_element((By.XPATH, pim_data.ElementLocators.xpath_of_single_marital_status),
+                                             text_=pim_data.PersonalDetails.marital_status))
+        # input_single_marital_status = driver.find_element(By.XPATH, xpath_of_single_marital_status)
+        # input_single_marital_status.click()
+        single_status.click()
+
+        # select employee dob
+        employee_dob = self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_of_employee_dob)
+        employee_dob.send_keys(pim_data.PersonalDetails.employee_dob)
+
+        # select employee gender
+        self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_of_employee_gender).click()
+
+        # STEP 6 - click save button
+        self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_of_save_button1).click()
+
+        # STEP 7 - validate filled details are present
+        emp_id = input_employee_other_id.get_attribute('value')
+        assert emp_id == pim_data.PersonalDetails.employee_other_id
+
+        emp_license_no = input_employee_driver_license_number.get_attribute('value')
+        assert emp_license_no == pim_data.PersonalDetails.license_number
+
+        emp_license_expiry_date = input_employee_license_expiry_date.get_attribute('value')
+        assert emp_license_expiry_date == pim_data.PersonalDetails.license_expiry_date
+
+        xpath_of_ind_nationality = '//form[@class="oxd-form"]/div[3]/div[1]/div[1]/div/div[2]/div/div/div[1]'
+        emp_nation = self.driver.find_element(By.XPATH, pim_data.ElementLocators.xpath_of_indian_nationality)
+        indian_nationality = emp_nation.text
+        assert indian_nationality == "Indian"
+
+        xpath_of_emp_marital_status = '//form[@class="oxd-form"]/div[3]/div[1]/div[2]/div/div[2]/div/div/div[1]'
+        emp_marital_status = self.driver.find_element(By.XPATH, pim_data.ElementLocators.xpath_of_single_marital_status)
+        marital_status = emp_marital_status.text
+        assert marital_status == "Single"
+
+        emp_dob = employee_dob.get_attribute("value")
+        assert emp_dob == employee_dob
+
+        xpath_of_emp_gender = '//form[@class="oxd-form"]/div[3]/div[2]/div[2]/div/div[2]/div[1]/div[2]/div/label/span'
+        input_emp_gender = self.driver.find_element(by=By.XPATH, value=pim_data.ElementLocators.xpath_of_employee_gender)
+        assert input_emp_gender.is_enabled()
+        print("SUCCESS # FILLED DETAILS ARE PRESENT")
+
+
+
+
+
+
