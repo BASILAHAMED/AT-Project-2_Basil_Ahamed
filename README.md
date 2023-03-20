@@ -8,6 +8,7 @@ The photos are stored in a configurable file structure and the photo location is
 This release only includes employee photos and name and address and social security information and not any of the other information planned for later.
 
 Total 13 Testcases
+
 TC_PIM_01 - Search (text Box) Validation on Admin Page
 
 TC_PIM_02 - Validation of Page Headers - Drop Down on Admin Page
