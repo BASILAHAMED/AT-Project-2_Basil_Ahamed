@@ -34,5 +34,5 @@ Test Case 11 - Updating Employee Job Activation on Job Details page.
 
 Test Case 12 - Updating Employee Salary on Salary Component page.
 
-TC_PIM_13 - Updating Employee Salary on Tax Exemptions page.
+Test Case 13 - Updating Employee Salary on Tax Exemptions page.
 ```
