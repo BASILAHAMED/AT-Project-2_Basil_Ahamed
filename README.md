@@ -10,11 +10,11 @@ This release only includes employee photos and name and address and social secur
 ### Test Cases
 
 ```
-TC_PIM_01 - Search (text Box) Validation on Admin Page
+Test Case 1 - Search (text Box) Validation on Admin Page
 
-TC_PIM_02 - Validation of Page Headers - Drop Down on Admin Page
+Test Case 2 - Validation of Page Headers - Drop Down on Admin Page
 
-TC_PIM_03 - Creation of New Employee under PIM
+Test Case 3 - Creation of New Employee under PIM
 
 TC_PIM_4 - Validation of Employee Personal Details page post User Creation.
 
