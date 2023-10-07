@@ -1,6 +1,6 @@
 ### AT-Project-2_Basil_Ahamed
 
-### System Description
+### About Application
 
 The OrangeHRM System is a web based manages employee photos. Employees can add or change their own photos and Human Resources can add or change everyone's photos. 
 The system produces lists of photos by different selection criteria. Its photos will be used by many other systems in the company. 
