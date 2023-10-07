@@ -7,7 +7,7 @@ The system produces lists of photos by different selection criteria. Its photos 
 The photos are stored in a configurable file structure and the photo location is pointed to by a file system. 
 This release only includes employee photos and name and address and social security information and not any of the other information planned for later.
 
-### Test Scenario and Use Cases
+### Test Cases
 
 ```
 TC_PIM_01 - Search (text Box) Validation on Admin Page
