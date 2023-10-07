@@ -16,23 +16,23 @@ Test Case 2 - Validation of Page Headers - Drop Down on Admin Page
 
 Test Case 3 - Creation of New Employee under PIM
 
-TC_PIM_4 - Validation of Employee Personal Details page post User Creation.
+Test Case 4 - Validation of Employee Personal Details page post User Creation.
 
-TC_PIM_ 5 - Updating Employee Personal Details page post User Creation.
+Test Case 5 - Updating Employee Personal Details page post User Creation.
 
-TC_PIM_6 - Updating Employee Contact Details page post User Creation.
+Test Case 6 - Updating Employee Contact Details page post User Creation.
 
-TC_PIM_7 - Updating Employee Emergency Contact Details page post User Creation.
+Test Case 7 - Updating Employee Emergency Contact Details page post User Creation.
 
-TC_PIM_8 - Updating Employee Dependents Contact Details page post User Creation.
+Test Case 8 - Updating Employee Dependents Contact Details page post User Creation.
 
-TC_PIM 9 - Updating Employee Job Details page.
+Test Case 9 - Updating Employee Job Details page.
 
-TC_PIM_10 - Updating Employee Job Details page.
+Test Case 10 - Updating Employee Job Details page.
 
-TC_PIM_11 - Updating Employee Job Activation on Job Details page.
+Test Case 11 - Updating Employee Job Activation on Job Details page.
 
-TC_PIM_12 - Updating Employee Salary on Salary Component page.
+Test Case 12 - Updating Employee Salary on Salary Component page.
 
 TC_PIM_13 - Updating Employee Salary on Tax Exemptions page.
 ```
